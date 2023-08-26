@@ -1,11 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:productos_app/src/models/category_model.dart';
 import 'package:productos_app/src/services/products_services.dart';
 import 'package:productos_app/src/widget/input_home_page.dart';
 import 'package:productos_app/src/widget/header_home_page.dart';
+import 'package:productos_app/src/widget/card_pruduct.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -115,92 +114,6 @@ class _CardsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productsService = Provider.of<ProductsService>(context);
-
-    return SliverPadding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      sliver: SliverGrid(
-        delegate: SliverChildBuilderDelegate(
-          (BuildContext context, index) {
-            return GestureDetector(
-              onTap: () => print('Click en el card...'),
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.white,
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 3,
-                              offset: Offset(0, 0))
-                        ]),
-                    child: const Column(
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
-                            ),
-                            child: Image(
-                              alignment: Alignment.topCenter,
-                              image: NetworkImage(
-                                  'https://nikearprod.vtexassets.com/arquivos/ids/717498-1000-1000?v=1779194544&width=1000&height=1000&aspect=true'),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Trail Running Jacket Nike Windrunner',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              Text(
-                                '\$99',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black87,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 10),
-                      ],
-                    ),
-                  ),
-                  const Positioned(
-                    right: 10,
-                    top: 10,
-                    child: Icon(
-                      Icons.favorite_border_outlined,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-          childCount: productsService.products.length,
-        ),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 15,
-          crossAxisSpacing: 15,
-          childAspectRatio: 0.67,
-        ),
-      ),
-    );
+    return const CardProduct();
   }
 }
