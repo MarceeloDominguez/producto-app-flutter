@@ -4,15 +4,15 @@ import 'package:productos_app/src/models/products_model.dart';
 import 'package:productos_app/src/data/products.dart';
 
 class ProductsService with ChangeNotifier {
-  String _selectedCategory = 'adidas';
+  String _selectedCategory = 'Adidas';
   //inicializo _products con la lista de productos que viene de data
   List<Product> get _products => listProducts;
 
   List<Category> categories = [
-    Category('adidas'),
-    Category('nike'),
-    Category('topper'),
-    Category('puma'),
+    Category('Adidas'),
+    Category('Nike'),
+    Category('Topper'),
+    Category('Puma'),
   ];
 
   get selectedCategory => _selectedCategory;
